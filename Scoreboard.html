@@ -32,31 +32,30 @@
 
     .team-card {
       width: 180px;
-      /* Remove fixed height for dynamic sizing */
-      min-height: 120px; /* base height */
+      min-height: 120px;  /* base height, grows if needed */
       padding: 10px 15px;
       border-radius: 10px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between; /* pushes score to bottom */
       align-items: center;
       box-sizing: border-box;
-      word-wrap: break-word; /* allow long words to break */
-      white-space: normal; /* allow text wrap */
+      word-wrap: break-word;
+      white-space: normal;
     }
 
     .team-name {
       font-size: 18px;
       margin-bottom: 10px;
-      white-space: normal; /* allow multiple lines */
+      white-space: normal;
       word-break: break-word;
+      text-align: center;
     }
 
     .team-score {
       font-size: 48px;
       font-weight: normal;
-      white-space: normal; /* wrap if needed */
-      word-break: break-word;
+      text-align: center;
     }
 
     .vikings { background-color: #1e1e1e; }
