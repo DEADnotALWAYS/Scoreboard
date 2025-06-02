@@ -8,13 +8,13 @@
       margin: 0;
       padding: 40px;
       font-family: 'Courier New', monospace;
-      background-color: transparent; /* changed from black */
+      background-color: transparent;
       color: white;
       text-align: center;
 
-      -webkit-font-smoothing: antialiased; /* smooth fonts on Chrome, Safari */
-      -moz-osx-font-smoothing: grayscale;  /* smooth fonts on Firefox macOS */
-      text-rendering: optimizeLegibility;  /* better font rendering */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
 
     .scoreboard {
@@ -24,7 +24,7 @@
 
     .title {
       font-size: 32px;
-      color: white; /* changed from black */
+      color: white;
       margin-bottom: 40px;
     }
 
@@ -93,7 +93,7 @@
       font-size: 14px;
       margin: 5px;
       width: 140px;
-      background-color: #444;     /* dark gray */
+      background-color: #444;
       color: white;
       border: 1px solid #777;
       border-radius: 4px;
@@ -104,7 +104,7 @@
       font-size: 16px;
       margin-top: 20px;
       cursor: pointer;
-      background-color: #666;     /* /* <div class="title">Freeloaders</div> medium gray */
+      background-color: #666;
       color: white;
       border: none;
       border-radius: 4px;
@@ -113,7 +113,7 @@
 </head>
 <body>
   <div class="scoreboard">
-    
+   
 
     <div class="teams">
       <div class="team-card vikings">
@@ -162,10 +162,36 @@
       ids.forEach(i => {
         const name = document.getElementById(`inputName${i}`).value;
         const score = document.getElementById(`inputScore${i}`).value;
-        if (name) document.getElementById(`name${i}`).textContent = name;
-        if (score !== '') document.getElementById(`score${i}`).textContent = score;
+
+        if (name) {
+          document.getElementById(`name${i}`).textContent = name;
+          localStorage.setItem(`name${i}`, name);
+        }
+        if (score !== '') {
+          document.getElementById(`score${i}`).textContent = score;
+          localStorage.setItem(`score${i}`, score);
+        }
       });
     }
+
+    window.onload = () => {
+      const ids = [1, 2, 3, 4];
+      ids.forEach(i => {
+        const savedName = localStorage.getItem(`name${i}`);
+        const savedScore = localStorage.getItem(`score${i}`);
+
+        if (savedName) {
+          document.getElementById(`name${i}`).textContent = savedName;
+          document.getElementById(`inputName${i}`).value = savedName;
+        }
+
+        if (savedScore !== null) {
+          document.getElementById(`score${i}`).textContent = savedScore;
+          document.getElementById(`inputScore${i}`).value = savedScore;
+        }
+      });
+    };
   </script>
 </body>
 </html>
+
