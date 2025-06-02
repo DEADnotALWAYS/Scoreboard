@@ -32,22 +32,31 @@
 
     .team-card {
       width: 180px;
-      height: 120px;
+      /* Remove fixed height for dynamic sizing */
+      min-height: 120px; /* base height */
+      padding: 10px 15px;
       border-radius: 10px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      box-sizing: border-box;
+      word-wrap: break-word; /* allow long words to break */
+      white-space: normal; /* allow text wrap */
     }
 
     .team-name {
       font-size: 18px;
       margin-bottom: 10px;
+      white-space: normal; /* allow multiple lines */
+      word-break: break-word;
     }
 
     .team-score {
       font-size: 48px;
       font-weight: normal;
+      white-space: normal; /* wrap if needed */
+      word-break: break-word;
     }
 
     .vikings { background-color: #1e1e1e; }
@@ -65,7 +74,6 @@
 </head>
 <body>
   <div class="scoreboard">
-
     <div class="teams">
       <div class="team-card vikings">
         <div class="team-name" id="name1">Vikings</div>
