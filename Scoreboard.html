@@ -32,12 +32,12 @@
 
     .team-card {
       width: 180px;
-      min-height: 120px;  /* base height, grows if needed */
+      min-height: 120px;
       padding: 10px 15px;
       border-radius: 10px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* pushes score to bottom */
+      justify-content: space-between;
       align-items: center;
       box-sizing: border-box;
       word-wrap: break-word;
@@ -106,12 +106,12 @@
           const rows = json.table.rows;
 
           rows.forEach((row, i) => {
-            const name = row.c[0]?.v || '';
-            const name = rawName.replace(/\n/g, '<br>');
+            const rawName = row.c[0]?.v || '';
+            const name = rawName.replace(/\n/g, '<br>'); // Replace line breaks with <br> tags
             const score = row.c[1]?.v ?? '';
             const nameEl = document.getElementById(`name${i + 1}`);
             const scoreEl = document.getElementById(`score${i + 1}`);
-            if (nameEl) nameEl.innerHTML = name;
+            if (nameEl) nameEl.innerHTML = name;  // use innerHTML for line breaks
             if (scoreEl) scoreEl.textContent = score;
           });
         });
@@ -122,3 +122,4 @@
   </script>
 </body>
 </html>
+
