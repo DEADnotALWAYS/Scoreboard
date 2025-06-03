@@ -23,116 +23,89 @@
       margin-bottom: 40px;
     }
 
-    .teams {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 40px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
     }
 
-    .team-card {
-      width: 180px;
-      min-height: 120px;
-      padding: 10px 15px;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: start;
-      align-items: center;
-      box-sizing: border-box;
+    th, td {
+      padding: 10px;
+      border: 1px solid #444;
+      text-align: center;
       word-wrap: break-word;
-      white-space: normal;
     }
 
-    .team-name {
+    th {
+      background-color: #222;
       font-size: 18px;
-      margin-bottom: 10px;
-      text-align: center;
     }
 
-    .team-score {
-      font-size: 48px;
-      font-weight: normal;
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .team-games {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      font-size: 16px;
-    }
-
-    .team-games div {
-      padding: 2px 0;
-    }
-
-    .vikings { background-color: #1e1e1e; }
-    .vikings .team-score { color: #ff4d4d; }
-
-    .wildcats { background-color: #1f1f3f; }
-    .wildcats .team-score { color: orange; }
-
-    .colts { background-color: #200000; }
-    .colts .team-score { color: violet; }
-
-    .panthers { background-color: #002020; }
-    .panthers .team-score { color: cyan; }
+    tr.vikings { background-color: #1e1e1e; color: #ff4d4d; }
+    tr.wildcats { background-color: #1f1f3f; color: orange; }
+    tr.colts { background-color: #200000; color: violet; }
+    tr.panthers { background-color: #002020; color: cyan; }
   </style>
 </head>
 <body>
   <div class="scoreboard">
-    <div class="teams">
-      <div class="team-card vikings">
-        <div class="team-name" id="name1">Vikings</div>
-        <div class="team-score" id="score1">0</div>
-        <div class="team-games" id="games1">
-          <div id="game1_1"></div>
-          <div id="game1_2"></div>
-          <div id="game1_3"></div>
-          <div id="game1_4"></div>
-          <div id="game1_5"></div>
-          <div id="game1_6"></div>
-        </div>
-      </div>
-      <div class="team-card wildcats">
-        <div class="team-name" id="name2">Wildcats</div>
-        <div class="team-score" id="score2">0</div>
-        <div class="team-games" id="games2">
-          <div id="game2_1"></div>
-          <div id="game2_2"></div>
-          <div id="game2_3"></div>
-          <div id="game2_4"></div>
-          <div id="game2_5"></div>
-          <div id="game2_6"></div>
-        </div>
-      </div>
-      <div class="team-card colts">
-        <div class="team-name" id="name3">Colts</div>
-        <div class="team-score" id="score3">0</div>
-        <div class="team-games" id="games3">
-          <div id="game3_1"></div>
-          <div id="game3_2"></div>
-          <div id="game3_3"></div>
-          <div id="game3_4"></div>
-          <div id="game3_5"></div>
-          <div id="game3_6"></div>
-        </div>
-      </div>
-      <div class="team-card panthers">
-        <div class="team-name" id="name4">Panthers</div>
-        <div class="team-score" id="score4">0</div>
-        <div class="team-games" id="games4">
-          <div id="game4_1"></div>
-          <div id="game4_2"></div>
-          <div id="game4_3"></div>
-          <div id="game4_4"></div>
-          <div id="game4_5"></div>
-          <div id="game4_6"></div>
-        </div>
-      </div>
-    </div>
+    <div class="title">Freeloaders Scoreboard</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Score</th>
+          <th>Game 1</th>
+          <th>Game 2</th>
+          <th>Game 3</th>
+          <th>Game 4</th>
+          <th>Game 5</th>
+          <th>Game 6</th>
+        </tr>
+      </thead>
+      <tbody id="score-table">
+        <tr class="vikings">
+          <td id="name1">Vikings</td>
+          <td id="score1">0</td>
+          <td id="game1_1"></td>
+          <td id="game1_2"></td>
+          <td id="game1_3"></td>
+          <td id="game1_4"></td>
+          <td id="game1_5"></td>
+          <td id="game1_6"></td>
+        </tr>
+        <tr class="wildcats">
+          <td id="name2">Wildcats</td>
+          <td id="score2">0</td>
+          <td id="game2_1"></td>
+          <td id="game2_2"></td>
+          <td id="game2_3"></td>
+          <td id="game2_4"></td>
+          <td id="game2_5"></td>
+          <td id="game2_6"></td>
+        </tr>
+        <tr class="colts">
+          <td id="name3">Colts</td>
+          <td id="score3">0</td>
+          <td id="game3_1"></td>
+          <td id="game3_2"></td>
+          <td id="game3_3"></td>
+          <td id="game3_4"></td>
+          <td id="game3_5"></td>
+          <td id="game3_6"></td>
+        </tr>
+        <tr class="panthers">
+          <td id="name4">Panthers</td>
+          <td id="score4">0</td>
+          <td id="game4_1"></td>
+          <td id="game4_2"></td>
+          <td id="game4_3"></td>
+          <td id="game4_4"></td>
+          <td id="game4_5"></td>
+          <td id="game4_6"></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <script>
@@ -151,25 +124,24 @@
             const rawName = row.c[0]?.v || '';
             const name = rawName.replace(/\n/g, '<br>');
             const score = row.c[1]?.v ?? '';
+
             const nameEl = document.getElementById(`name${i + 1}`);
             const scoreEl = document.getElementById(`score${i + 1}`);
             if (nameEl) nameEl.innerHTML = name;
             if (scoreEl) scoreEl.textContent = score;
 
-            // Games (columns C to H => indices 2 to 7)
+            // Game columns C to H (indices 2 to 7)
             for (let g = 0; g < 6; g++) {
-              const gameData = row.c[2 + g]?.v ?? '';
+              const gameValue = row.c[2 + g]?.v ?? '';
               const gameEl = document.getElementById(`game${i + 1}_${g + 1}`);
-              if (gameEl) gameEl.textContent = `Game ${g + 1}: ${gameData}`;
+              if (gameEl) gameEl.textContent = gameValue;
             }
           });
         });
     }
 
     window.onload = fetchScores;
-    setInterval(fetchScores, 10000); // refresh every 10 seconds
+    setInterval(fetchScores, 10000);
   </script>
 </body>
 </html>
-
-
