@@ -37,7 +37,7 @@
       border-radius: 10px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: start;
       align-items: center;
       box-sizing: border-box;
       word-wrap: break-word;
@@ -47,8 +47,6 @@
     .team-name {
       font-size: 18px;
       margin-bottom: 10px;
-      white-space: normal;
-      word-break: break-word;
       text-align: center;
     }
 
@@ -56,6 +54,18 @@
       font-size: 48px;
       font-weight: normal;
       text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .team-games {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 16px;
+    }
+
+    .team-games div {
+      padding: 2px 0;
     }
 
     .vikings { background-color: #1e1e1e; }
@@ -77,18 +87,50 @@
       <div class="team-card vikings">
         <div class="team-name" id="name1">Vikings</div>
         <div class="team-score" id="score1">0</div>
+        <div class="team-games" id="games1">
+          <div id="game1_1"></div>
+          <div id="game1_2"></div>
+          <div id="game1_3"></div>
+          <div id="game1_4"></div>
+          <div id="game1_5"></div>
+          <div id="game1_6"></div>
+        </div>
       </div>
       <div class="team-card wildcats">
         <div class="team-name" id="name2">Wildcats</div>
         <div class="team-score" id="score2">0</div>
+        <div class="team-games" id="games2">
+          <div id="game2_1"></div>
+          <div id="game2_2"></div>
+          <div id="game2_3"></div>
+          <div id="game2_4"></div>
+          <div id="game2_5"></div>
+          <div id="game2_6"></div>
+        </div>
       </div>
       <div class="team-card colts">
         <div class="team-name" id="name3">Colts</div>
         <div class="team-score" id="score3">0</div>
+        <div class="team-games" id="games3">
+          <div id="game3_1"></div>
+          <div id="game3_2"></div>
+          <div id="game3_3"></div>
+          <div id="game3_4"></div>
+          <div id="game3_5"></div>
+          <div id="game3_6"></div>
+        </div>
       </div>
       <div class="team-card panthers">
         <div class="team-name" id="name4">Panthers</div>
         <div class="team-score" id="score4">0</div>
+        <div class="team-games" id="games4">
+          <div id="game4_1"></div>
+          <div id="game4_2"></div>
+          <div id="game4_3"></div>
+          <div id="game4_4"></div>
+          <div id="game4_5"></div>
+          <div id="game4_6"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -107,12 +149,19 @@
 
           rows.forEach((row, i) => {
             const rawName = row.c[0]?.v || '';
-            const name = rawName.replace(/\n/g, '<br>'); // Replace line breaks with <br> tags
+            const name = rawName.replace(/\n/g, '<br>');
             const score = row.c[1]?.v ?? '';
             const nameEl = document.getElementById(`name${i + 1}`);
             const scoreEl = document.getElementById(`score${i + 1}`);
-            if (nameEl) nameEl.innerHTML = name;  // use innerHTML for line breaks
+            if (nameEl) nameEl.innerHTML = name;
             if (scoreEl) scoreEl.textContent = score;
+
+            // Games (columns C to H => indices 2 to 7)
+            for (let g = 0; g < 6; g++) {
+              const gameData = row.c[2 + g]?.v ?? '';
+              const gameEl = document.getElementById(`game${i + 1}_${g + 1}`);
+              if (gameEl) gameEl.textContent = `Game ${g + 1}: ${gameData}`;
+            }
           });
         });
     }
@@ -122,4 +171,5 @@
   </script>
 </body>
 </html>
+
 
