@@ -3,21 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <title>Freeloaders scoreboard</title>
-  <!-- Import Fira Code font -->
+  <!-- Fira Code font -->
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 40px;
       font-family: 'Fira Code', monospace;
-      font-size: 18px;
       background-color: #141414;
       color: white;
       text-align: center;
-
-      /* Improve font rendering */
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
     .scoreboard {
@@ -41,6 +36,13 @@
       border: 1px solid #444;
       text-align: center;
       word-wrap: break-word;
+    }
+
+    td.name {
+      white-space: normal;
+      line-height: 1.2;
+      padding: 6px 10px;
+      font-size: 16px;
     }
 
     th {
@@ -71,7 +73,7 @@
       </thead>
       <tbody id="score-table">
         <tr class="vikings">
-          <td id="name1">Vikings</td>
+          <td id="name1" class="name">Vikings</td>
           <td id="score1">0</td>
           <td id="game1_1"></td>
           <td id="game1_2"></td>
@@ -81,7 +83,7 @@
           <td id="game1_6"></td>
         </tr>
         <tr class="wildcats">
-          <td id="name2">Wildcats</td>
+          <td id="name2" class="name">Wildcats</td>
           <td id="score2">0</td>
           <td id="game2_1"></td>
           <td id="game2_2"></td>
@@ -91,7 +93,7 @@
           <td id="game2_6"></td>
         </tr>
         <tr class="colts">
-          <td id="name3">Colts</td>
+          <td id="name3" class="name">Colts</td>
           <td id="score3">0</td>
           <td id="game3_1"></td>
           <td id="game3_2"></td>
@@ -101,7 +103,7 @@
           <td id="game3_6"></td>
         </tr>
         <tr class="panthers">
-          <td id="name4">Panthers</td>
+          <td id="name4" class="name">Panthers</td>
           <td id="score4">0</td>
           <td id="game4_1"></td>
           <td id="game4_2"></td>
@@ -128,12 +130,15 @@
 
           rows.forEach((row, i) => {
             const rawName = row.c[0]?.v || '';
-            const name = rawName.replace(/\n/g, '<br>');
+            const name = rawName.replace(/\s+/, '<br>'); // break first space
             const score = row.c[1]?.v ?? '';
 
             const nameEl = document.getElementById(`name${i + 1}`);
             const scoreEl = document.getElementById(`score${i + 1}`);
-            if (nameEl) nameEl.innerHTML = name;
+            if (nameEl) {
+              nameEl.innerHTML = name;
+              nameEl.title = rawName;
+            }
             if (scoreEl) scoreEl.textContent = score;
 
             for (let g = 0; g < 6; g++) {
